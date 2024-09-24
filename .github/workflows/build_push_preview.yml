@@ -1,0 +1,46 @@
+name: Remote Dispatch Action Initiator
+ 
+on:
+  # Dispatch or Manual triggers
+  workflow_dispatch:
+
+#  push:
+#    branches:
+#      - master
+#      # - develop
+#    paths:
+#      - '**'
+#      - '!**.md'
+#      - '!.github/**'
+#      - '.github/scripts/**'
+#      - '.github/workflows/**'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+ 
+jobs:
+  trigger_preview_build:
+    name: Trigger preview build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v4
+
+      - name: Validate Gradle Wrapper
+        uses: gradle/actions/wrapper-validation@v4
+
+      - name: Create Tag
+        run: |
+          git tag "preview-${{ github.run_number }}"
+          git push origin "preview-${{ github.run_number }}"
+
+      - name: Invoke workflow in preview repo
+        uses: benc-uk/workflow-dispatch@e2e5e9a103e331dad343f381a29e654aea3cf8fc # v1.2.4
+        with:
+          workflow: BuildPreview.yml
+          repo: bigbabyboost/mewtachi-preview
+          ref: "refs/heads/master"
+          token: "${{ secrets.BOT_PAT }}"
+          inputs: '{ "git-ref": "${{ steps.branch_names.outputs.current_branch }}" }'
