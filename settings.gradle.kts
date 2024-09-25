@@ -40,11 +40,7 @@ dependencyResolutionManagement {
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
-<<<<<<< HEAD
-rootProject.name = "TachiyomiSY"
-=======
 rootProject.name = "Mewtachi"
->>>>>>> mew/master
 include(":app")
 include(":core-metadata")
 include(":core:common")
