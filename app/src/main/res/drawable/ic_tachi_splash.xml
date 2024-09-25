@@ -2,8 +2,8 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:Height="254dp"
-        android:Width="256dp"
+        android:height="254dp"
+        android:width="256dp"
         android:drawable="@drawable/ic_tachi"
         android:gravity="center" />
 
