@@ -15,6 +15,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+# SPDX-License-Identifier: Apache-2.0
+#
+>>>>>>> mew/master
 
 ##############################################################################
 #
@@ -85,6 +88,8 @@ done
 APP_BASE_NAME=${0##*/}
 # Discard cd standard output in case $CDPATH is set (https://github.com/gradle/gradle/issues/25036)
 APP_HOME=$( cd "${APP_HOME:-./}" > /dev/null && pwd -P ) || exit
+APP_HOME=$( cd -P "${APP_HOME:-./}" > /dev/null && printf '%s
+' "$PWD" ) || exit
 
 # Use the maximum available, or set MAX_FD != -1 to use that value.
 MAX_FD=maximum
@@ -213,6 +218,12 @@ set -- \
         -classpath "$CLASSPATH" \
         org.gradle.wrapper.GradleWrapperMain \
         "$@"
+
+# Stop when "xargs" is not available.
+if ! command -v xargs >/dev/null 2>&1
+then
+    die "xargs is not available"
+fi
 
 # Use "xargs" to parse quoted args.
 #
