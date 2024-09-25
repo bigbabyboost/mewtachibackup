@@ -782,9 +782,6 @@
     <string name="onboarding_storage_help_action">Depolama kılavuzu</string>
     <string name="action_add_repo">Depo ekle</string>
     <string name="label_add_repo_input">Depo bağlantısı</string>
-<<<<<<< HEAD
-    <string name="action_add_repo_message">TachiyomiSY\'a ek depolar ekleyin. Bu, \"index.min.json\" ile biten bir bağlantı olmalıdır.</string>
-=======
     <string name="action_add_repo_message">Mewtachi\'a ek depolar ekleyin. Bu, \"index.min.json\" ile biten bir bağlantı olmalıdır.</string>
 >>>>>>> mew/master
     <string name="error_repo_exists">Bu depo zaten var!</string>
